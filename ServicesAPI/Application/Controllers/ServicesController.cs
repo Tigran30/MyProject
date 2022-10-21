@@ -20,12 +20,12 @@ namespace ServicesAPI.Application.Controllers
         private readonly IValidator<CreateServiceCommand> _createvalidator;
         private readonly IValidator<UpDateServiceCommand> _updatevalidator;
 
-        public ServicesController( IMediator mediator)
+        public ServicesController(IMediator mediator, IValidator<CreateServiceCommand> createvalidator, IValidator<UpDateServiceCommand> updatevalidator)
         {
-            
-            this._mediator = mediator;
+            _mediator = mediator;
+            _createvalidator = createvalidator;
+            _updatevalidator = updatevalidator;
         }
-
 
         [HttpGet("AllServices")]
         public async Task<IActionResult> GetAll()
